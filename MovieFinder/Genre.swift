@@ -7,7 +7,11 @@
 
 import Foundation
 
-/// **TMDB API** genre for the movie.
+/// Official genre for the movie from **[TMDB API](https://developer.themoviedb.org/reference/genre-movie-list)**.
+///
+/// Genre is a category of creative work, based on some stylistic criteria.
+///
+/// A movie can fit into multiple genres.
 struct Genre {
     /// Unique identifier for a genre.
     let id: Int
