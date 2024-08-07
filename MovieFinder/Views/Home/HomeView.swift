@@ -11,18 +11,39 @@ struct HomeView: View {
     var viewModel: HomeViewModel
     
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            LazyHStack(spacing: 4) {
-                ForEach(viewModel.trendingMovies) { movie in
-                    MoviePosterView(for: movie)
-                        .frame(width: 120)
-                }
-            }
+        VStack {
+            trendingMovies
+            Spacer()
         }
-        .padding()
         .task {
             await viewModel.fetchMovies()
         }
+    }
+    
+    var trendingMovies: some View {
+        VStack(spacing: 12) {
+            HStack {
+                Text("Trending Now")
+                    .font(.title2)
+                Spacer()
+                Button("See all") { }
+            }
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHStack(spacing: DrawableConstants.posterSpacing) {
+                    ForEach(viewModel.trendingMovies) { movie in
+                        MoviePosterView(for: movie)
+                            .frame(width: DrawableConstants.posterViewWidth)
+                    }
+                }
+                .fixedSize()
+            }
+        }
+        .padding()
+    }
+    
+    private enum DrawableConstants {
+        static let posterViewWidth: CGFloat = 120
+        static let posterSpacing: CGFloat = 4
     }
 }
 
@@ -34,10 +55,10 @@ struct MoviePosterView: View {
             poster
                 .resizable()
         } placeholder: {
-            RoundedRectangle(cornerRadius: 8)
+            RoundedRectangle(cornerRadius: DrawableConstants.cornerRadius)
         }
-        .aspectRatio(2/3, contentMode: .fit)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .aspectRatio(DrawableConstants.aspectRatio, contentMode: .fit)
+        .clipShape(RoundedRectangle(cornerRadius: DrawableConstants.cornerRadius))
     }
     
     init(for movie: MovieOverview) {
@@ -49,6 +70,11 @@ struct MoviePosterView: View {
         
         let posterURLString = Constants.ApiConstants.baseURLForImage + posterPath
         return URL(string: posterURLString)
+    }
+    
+    private enum DrawableConstants {
+        static let aspectRatio: CGFloat = 2/3
+        static let cornerRadius: CGFloat = 8
     }
 }
 
