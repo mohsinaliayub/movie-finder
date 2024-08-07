@@ -11,15 +11,28 @@ struct HomeView: View {
     var viewModel: HomeViewModel
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ScrollView(.horizontal, showsIndicators: false) {
+            LazyHStack {
+                ForEach(viewModel.trendingMovies) { _ in
+                    MovieInfoView()
+                        .frame(width: 140)
+                }
+            }
         }
+        .padding()
         .task {
             await viewModel.fetchMovies()
         }
+    }
+}
+
+struct MovieInfoView: View {
+    
+    var body: some View {
+        Image("deadpool")
+            .resizable()
+            .aspectRatio(2/3, contentMode: .fit)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }
 

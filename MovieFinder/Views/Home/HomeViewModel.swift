@@ -20,8 +20,10 @@ class HomeViewModel {
     func fetchMovies() async {
         do {
             trendingMovies = try await fetchTrendingMovies()
+            print(trendingMovies.count)
         } catch {
             self.error = error.localizedDescription
+            print(error.localizedDescription)
         }
     }
     

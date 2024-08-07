@@ -25,7 +25,7 @@ struct Movie {
     let genres: [Genre]
 }
 
-struct MovieOverview: Codable {
+struct MovieOverview: Codable, Identifiable {
     let id: Int
     let title: String
     let posterPath: String?
