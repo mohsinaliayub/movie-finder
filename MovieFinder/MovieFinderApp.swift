@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct MovieFinderApp: App {
+    private let homeViewModel = HomeViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            HomeView(viewModel: homeViewModel)
         }
     }
 }

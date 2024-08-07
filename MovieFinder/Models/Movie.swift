@@ -37,5 +37,9 @@ struct MovieOverview: Codable {
 
 struct MovieOverviewResult: Codable {
     let page: Int
-    let results: [MovieOverview]
+    let movies: [MovieOverview]
+    
+    enum CodingKeys: String, CodingKey {
+        case page, movies = "results"
+    }
 }

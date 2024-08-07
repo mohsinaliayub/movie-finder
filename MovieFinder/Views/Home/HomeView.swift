@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    private let apiKey = ""
+    var viewModel: HomeViewModel
     
     var body: some View {
         VStack {
@@ -17,10 +17,12 @@ struct HomeView: View {
                 .foregroundStyle(.tint)
             Text("Hello, world!")
         }
-        .padding()
+        .task {
+            await viewModel.fetchMovies()
+        }
     }
 }
 
 #Preview {
-    HomeView()
+    HomeView(viewModel: HomeViewModel())
 }
