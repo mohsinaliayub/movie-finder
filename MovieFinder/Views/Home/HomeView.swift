@@ -43,7 +43,7 @@ struct HomeView: View {
     
     private enum DrawableConstants {
         static let posterViewWidth: CGFloat = 120
-        static let posterSpacing: CGFloat = 4
+        static let posterSpacing: CGFloat = 8
     }
 }
 
