@@ -12,9 +12,13 @@ import Foundation
 /// Genre is a category of creative work, based on some stylistic criteria.
 ///
 /// A movie can fit into multiple genres.
-struct Genre {
+struct Genre: Codable {
     /// Unique identifier for a genre.
     let id: Int
     /// Official name of the genre.
     let name: String
+}
+
+struct GenreResponse: Codable {
+    let genres: [Genre]
 }

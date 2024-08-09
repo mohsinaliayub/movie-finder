@@ -20,7 +20,26 @@ struct Movie {
     /// The URL of the official movie backdrop.
     let backdropPath: URL?
     /// The IMDB rating of the movie.
-    let imdbRating: Double
+    let rating: Double
     /// An array of genres.
     let genres: [Genre]
+}
+
+struct MovieOverview: Codable, Identifiable {
+    let id: Int
+    let title: String
+    let posterPath: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case id, title, posterPath = "poster_path"
+    }
+}
+
+struct MovieOverviewResult: Codable {
+    let page: Int
+    let movies: [MovieOverview]
+    
+    enum CodingKeys: String, CodingKey {
+        case page, movies = "results"
+    }
 }
