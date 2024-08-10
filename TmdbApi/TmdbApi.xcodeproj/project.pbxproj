@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		68CA27E22C66C594000E7CDA /* TmdbApi.docc in Sources */ = {isa = PBXBuildFile; fileRef = 68CA27E12C66C594000E7CDA /* TmdbApi.docc */; };
 		68CA27E82C66C594000E7CDA /* TmdbApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68CA27DD2C66C594000E7CDA /* TmdbApi.framework */; };
-		68CA27ED2C66C594000E7CDA /* TmdbApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA27EC2C66C594000E7CDA /* TmdbApiTests.swift */; };
 		68CA27EE2C66C594000E7CDA /* TmdbApi.h in Headers */ = {isa = PBXBuildFile; fileRef = 68CA27E02C66C594000E7CDA /* TmdbApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68CA27F82C66D240000E7CDA /* TrendingMoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA27F72C66D240000E7CDA /* TrendingMoviesTests.swift */; };
+		68CA27FA2C66E885000E7CDA /* TrendingMoviesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA27F92C66E885000E7CDA /* TrendingMoviesRepository.swift */; };
+		68CA27FC2C66EB6E000E7CDA /* TmdbError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA27FB2C66EB6E000E7CDA /* TmdbError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +30,9 @@
 		68CA27E02C66C594000E7CDA /* TmdbApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TmdbApi.h; sourceTree = "<group>"; };
 		68CA27E12C66C594000E7CDA /* TmdbApi.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = TmdbApi.docc; sourceTree = "<group>"; };
 		68CA27E72C66C594000E7CDA /* TmdbApiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TmdbApiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		68CA27EC2C66C594000E7CDA /* TmdbApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbApiTests.swift; sourceTree = "<group>"; };
+		68CA27F72C66D240000E7CDA /* TrendingMoviesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMoviesTests.swift; sourceTree = "<group>"; };
+		68CA27F92C66E885000E7CDA /* TrendingMoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMoviesRepository.swift; sourceTree = "<group>"; };
+		68CA27FB2C66EB6E000E7CDA /* TmdbError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +75,10 @@
 		68CA27DF2C66C594000E7CDA /* TmdbApi */ = {
 			isa = PBXGroup;
 			children = (
+				68CA27FB2C66EB6E000E7CDA /* TmdbError.swift */,
 				68CA27E02C66C594000E7CDA /* TmdbApi.h */,
 				68CA27E12C66C594000E7CDA /* TmdbApi.docc */,
+				68CA27F92C66E885000E7CDA /* TrendingMoviesRepository.swift */,
 			);
 			path = TmdbApi;
 			sourceTree = "<group>";
@@ -80,7 +86,7 @@
 		68CA27EB2C66C594000E7CDA /* TmdbApiTests */ = {
 			isa = PBXGroup;
 			children = (
-				68CA27EC2C66C594000E7CDA /* TmdbApiTests.swift */,
+				68CA27F72C66D240000E7CDA /* TrendingMoviesTests.swift */,
 			);
 			path = TmdbApiTests;
 			sourceTree = "<group>";
@@ -195,6 +201,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				68CA27E22C66C594000E7CDA /* TmdbApi.docc in Sources */,
+				68CA27FA2C66E885000E7CDA /* TrendingMoviesRepository.swift in Sources */,
+				68CA27FC2C66EB6E000E7CDA /* TmdbError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,7 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68CA27ED2C66C594000E7CDA /* TmdbApiTests.swift in Sources */,
+				68CA27F82C66D240000E7CDA /* TrendingMoviesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +418,7 @@
 		68CA27F52C66C594000E7CDA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 54L66DHDVH;
@@ -425,6 +434,7 @@
 		68CA27F62C66C594000E7CDA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 54L66DHDVH;
