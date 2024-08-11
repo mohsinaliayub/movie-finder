@@ -1,5 +1,5 @@
 //
-//  Common.swift
+//  Constants.swift
 //  TmdbApi
 //
 //  Created by Mohsin Ali Ayub on 11.08.24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Common {
+enum Constants {
     enum ApiConstants {
         /// The API Key used to make all requests.
         ///

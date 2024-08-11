@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		682EEF322C6969BB00BCEF1C /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682EEF312C6969BB00BCEF1C /* Common.swift */; };
+		682EEF322C6969BB00BCEF1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682EEF312C6969BB00BCEF1C /* Constants.swift */; };
+		682EEF362C69760500BCEF1C /* MovieOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682EEF352C69760500BCEF1C /* MovieOverview.swift */; };
 		68CA27E22C66C594000E7CDA /* TmdbApi.docc in Sources */ = {isa = PBXBuildFile; fileRef = 68CA27E12C66C594000E7CDA /* TmdbApi.docc */; };
 		68CA27E82C66C594000E7CDA /* TmdbApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68CA27DD2C66C594000E7CDA /* TmdbApi.framework */; };
 		68CA27EE2C66C594000E7CDA /* TmdbApi.h in Headers */ = {isa = PBXBuildFile; fileRef = 68CA27E02C66C594000E7CDA /* TmdbApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -27,7 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		682EEF312C6969BB00BCEF1C /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		682EEF312C6969BB00BCEF1C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		682EEF352C69760500BCEF1C /* MovieOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieOverview.swift; sourceTree = "<group>"; };
 		68CA27DD2C66C594000E7CDA /* TmdbApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TmdbApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68CA27E02C66C594000E7CDA /* TmdbApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TmdbApi.h; sourceTree = "<group>"; };
 		68CA27E12C66C594000E7CDA /* TmdbApi.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = TmdbApi.docc; sourceTree = "<group>"; };
@@ -56,6 +58,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		682EEF332C6975EB00BCEF1C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				682EEF382C69768B00BCEF1C /* Error */,
+				682EEF342C6975F400BCEF1C /* Movie */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		682EEF342C6975F400BCEF1C /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+				682EEF352C69760500BCEF1C /* MovieOverview.swift */,
+			);
+			path = Movie;
+			sourceTree = "<group>";
+		};
+		682EEF372C69761800BCEF1C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				682EEF312C6969BB00BCEF1C /* Constants.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		682EEF382C69768B00BCEF1C /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				68CA27FB2C66EB6E000E7CDA /* TmdbError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 		68CA27D32C66C593000E7CDA = {
 			isa = PBXGroup;
 			children = (
@@ -77,11 +112,11 @@
 		68CA27DF2C66C594000E7CDA /* TmdbApi */ = {
 			isa = PBXGroup;
 			children = (
-				68CA27FB2C66EB6E000E7CDA /* TmdbError.swift */,
+				682EEF372C69761800BCEF1C /* Common */,
+				682EEF332C6975EB00BCEF1C /* Models */,
 				68CA27E02C66C594000E7CDA /* TmdbApi.h */,
 				68CA27E12C66C594000E7CDA /* TmdbApi.docc */,
 				68CA27F92C66E885000E7CDA /* TrendingMoviesRepository.swift */,
-				682EEF312C6969BB00BCEF1C /* Common.swift */,
 			);
 			path = TmdbApi;
 			sourceTree = "<group>";
@@ -203,10 +238,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				682EEF322C6969BB00BCEF1C /* Common.swift in Sources */,
+				682EEF322C6969BB00BCEF1C /* Constants.swift in Sources */,
 				68CA27E22C66C594000E7CDA /* TmdbApi.docc in Sources */,
 				68CA27FA2C66E885000E7CDA /* TrendingMoviesRepository.swift in Sources */,
 				68CA27FC2C66EB6E000E7CDA /* TmdbError.swift in Sources */,
+				682EEF362C69760500BCEF1C /* MovieOverview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
