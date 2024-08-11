@@ -8,5 +8,8 @@
 import Foundation
 
 enum TmdbError: Error {
-    case invalidUrl
+    case invalidURL
+    case badURL
+    case notFound
+    case unauthorized
 }
