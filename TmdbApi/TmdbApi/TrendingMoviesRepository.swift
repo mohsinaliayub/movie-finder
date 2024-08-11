@@ -19,6 +19,7 @@ class TrendingMoviesRepository {
         }
         
         // request is successful, deserialize data
-        return []
+        let moviesResult = try JSONDecoder().decode(MovieOverviewResult.self, from: data)
+        return moviesResult.movies
     }
 }

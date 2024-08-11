@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		682EEF322C6969BB00BCEF1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682EEF312C6969BB00BCEF1C /* Constants.swift */; };
 		682EEF362C69760500BCEF1C /* MovieOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682EEF352C69760500BCEF1C /* MovieOverview.swift */; };
+		682EEF3A2C69780400BCEF1C /* MovieOverviewResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682EEF392C69780400BCEF1C /* MovieOverviewResult.swift */; };
 		68CA27E22C66C594000E7CDA /* TmdbApi.docc in Sources */ = {isa = PBXBuildFile; fileRef = 68CA27E12C66C594000E7CDA /* TmdbApi.docc */; };
 		68CA27E82C66C594000E7CDA /* TmdbApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68CA27DD2C66C594000E7CDA /* TmdbApi.framework */; };
 		68CA27EE2C66C594000E7CDA /* TmdbApi.h in Headers */ = {isa = PBXBuildFile; fileRef = 68CA27E02C66C594000E7CDA /* TmdbApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		682EEF312C6969BB00BCEF1C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		682EEF352C69760500BCEF1C /* MovieOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieOverview.swift; sourceTree = "<group>"; };
+		682EEF392C69780400BCEF1C /* MovieOverviewResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieOverviewResult.swift; sourceTree = "<group>"; };
 		68CA27DD2C66C594000E7CDA /* TmdbApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TmdbApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68CA27E02C66C594000E7CDA /* TmdbApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TmdbApi.h; sourceTree = "<group>"; };
 		68CA27E12C66C594000E7CDA /* TmdbApi.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = TmdbApi.docc; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				682EEF352C69760500BCEF1C /* MovieOverview.swift */,
+				682EEF392C69780400BCEF1C /* MovieOverviewResult.swift */,
 			);
 			path = Movie;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				68CA27E22C66C594000E7CDA /* TmdbApi.docc in Sources */,
 				68CA27FA2C66E885000E7CDA /* TrendingMoviesRepository.swift in Sources */,
 				68CA27FC2C66EB6E000E7CDA /* TmdbError.swift in Sources */,
+				682EEF3A2C69780400BCEF1C /* MovieOverviewResult.swift in Sources */,
 				682EEF362C69760500BCEF1C /* MovieOverview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

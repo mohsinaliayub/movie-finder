@@ -87,6 +87,18 @@ final class TrendingMoviesTests: XCTestCase {
         }
     }
     
+    func test_fetchTrending_withSuccessfulRequest_hasAtleastOneMovieOverview() async {
+        let url = trendingMoviesURL()
+        
+        do {
+            let movies = try await sut.fetchMovies(from: url)
+            XCTAssertNotNil(movies.first?.id)
+            XCTAssertNotNil(movies.first?.title)
+        } catch {
+            XCTFail("Request (with proper URL and API Key) should have succedded")
+        }
+    }
+    
     // MARK: - Helper Methods
     private func trendingMoviesURL() -> URL? {
         URL(string: "https://api.themoviedb.org/3/trending/movie/week?api_key=\(Constants.ApiConstants.apiKey)")
