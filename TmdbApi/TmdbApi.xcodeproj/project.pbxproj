@@ -113,6 +113,14 @@
 			path = Trending;
 			sourceTree = "<group>";
 		};
+		6876F3D02C6A3D1B00492D04 /* Trending Repository Tests */ = {
+			isa = PBXGroup;
+			children = (
+				68CA27F72C66D240000E7CDA /* TmdbTrendingMoviesTests.swift */,
+			);
+			path = "Trending Repository Tests";
+			sourceTree = "<group>";
+		};
 		68CA27D32C66C593000E7CDA = {
 			isa = PBXGroup;
 			children = (
@@ -146,7 +154,7 @@
 		68CA27EB2C66C594000E7CDA /* TmdbApiTests */ = {
 			isa = PBXGroup;
 			children = (
-				68CA27F72C66D240000E7CDA /* TmdbTrendingMoviesTests.swift */,
+				6876F3D02C6A3D1B00492D04 /* Trending Repository Tests */,
 			);
 			path = TmdbApiTests;
 			sourceTree = "<group>";

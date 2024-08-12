@@ -100,8 +100,27 @@ final class TmdbTrendingMoviesTests: XCTestCase {
         }
     }
     
+    func test_fetchNextPage_withSuccessfulRequest_returnsNewResults() async {
+        do {
+            var movies = try await sut.fetchTrending() // returns first 20 results
+            movies += try await sut.fetchNextPage() // returns next 20 results
+            XCTAssertEqual(movies.count, 40)
+        } catch {
+            XCTFail("Request (with proper URL and API Key) should have returned the next page")
+        }
+    }
+    
     // MARK: - Helper Methods
     private func trendingMoviesURL() -> URL? {
         URL(string: "https://api.themoviedb.org/3/trending/movie/week?api_key=\(Constants.ApiConstants.apiKey)")
+    }
+    
+    private func trendingMoviesURLWithPage(_ page: Int = 2) -> URL? {
+        var components = URLComponents(string: "https://api.themoviedb.org/3/trending/movie/week")
+        components?.queryItems = [
+            URLQueryItem(name: "api_key", value: Constants.ApiConstants.apiKey),
+            URLQueryItem(name: "page", value: "\(page)")
+        ]
+        return components?.url
     }
 }

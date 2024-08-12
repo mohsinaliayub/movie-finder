@@ -9,6 +9,7 @@ import Foundation
 
 public class TmdbTrendingMovies: TrendingMoviesRepository {
     var url: URL?
+    private var currentPage: Int
     private let session: URLSession
     
     /// A successful response status code for an HTTP request.
@@ -16,7 +17,8 @@ public class TmdbTrendingMovies: TrendingMoviesRepository {
     
     public init(session: URLSession = .shared) {
         self.session = session
-        self.url = URL(string: "https://api.themoviedb.org/3/trending/movie/week?api_key=\(Constants.ApiConstants.apiKey)")
+        self.currentPage = 0
+        self.url = baseURLComponents().url
     }
     
     public func fetchTrending() async throws -> [MovieOverview] {
@@ -29,6 +31,35 @@ public class TmdbTrendingMovies: TrendingMoviesRepository {
         
         // request is successful, decode data
         let moviesResult = try JSONDecoder().decode(MovieOverviewResult.self, from: data)
+        currentPage = moviesResult.page
         return moviesResult.movies
+    }
+    
+    public func fetchNextPage() async throws -> [MovieOverview] {
+        // to fetch the next page, we need to add "page" query item
+        var components = baseURLComponents()
+        components.addQueryItem(name: "page", value: "\(currentPage+1)")
+        
+        self.url = baseURLComponents().url
+        
+        return try await fetchTrending()
+    }
+    
+    // MARK: Helper methods
+    
+    private func baseURLComponents() -> URLComponents {
+        var components = URLComponents(string: "https://api.themoviedb.org/3/trending/movie/week")!
+        components.queryItems = [
+            URLQueryItem(name: "api_key", value: Constants.ApiConstants.apiKey)
+        ]
+        
+        return components
+    }
+}
+
+
+extension URLComponents {
+    mutating func addQueryItem(name: String, value: String) {
+        queryItems?.append(URLQueryItem(name: name, value: value))
     }
 }
