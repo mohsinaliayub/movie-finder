@@ -1,5 +1,5 @@
 //
-//  TrendingMoviesTests.swift
+//  TmdbTrendingMoviesTests.swift
 //  TmdbApiTests
 //
 //  Created by Mohsin Ali Ayub on 10.08.24.
@@ -10,11 +10,11 @@ import XCTest
 
 // TODO: - Improve the code: try not to use do-catch
 
-final class TrendingMoviesTests: XCTestCase {
-    var sut: TrendingMoviesRepository!
+final class TmdbTrendingMoviesTests: XCTestCase {
+    var sut: TmdbTrendingMovies!
     
     override func setUp() async throws {
-        sut = TrendingMoviesRepository()
+        sut = TmdbTrendingMovies()
     }
     
     override func tearDown() async throws {

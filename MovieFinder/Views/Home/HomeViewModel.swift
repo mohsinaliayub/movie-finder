@@ -13,7 +13,7 @@ import TmdbApi
 class HomeViewModel {
     var trendingMovies: [MovieOverview]
     var error: String?
-    private let repository = TrendingMoviesRepository()
+    private let repository = TmdbTrendingMovies()
     
     init() {
         trendingMovies = []

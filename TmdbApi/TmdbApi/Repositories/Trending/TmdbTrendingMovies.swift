@@ -1,5 +1,5 @@
 //
-//  TrendingMoviesRepository.swift
+//  TmdbTrendingMovies.swift
 //  TmdbApi
 //
 //  Created by Mohsin Ali Ayub on 10.08.24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class TrendingMoviesRepository {
+public class TmdbTrendingMovies {
     private let session: URLSession
     
     public init(session: URLSession = .shared) {

@@ -10,11 +10,12 @@
 		682EEF322C6969BB00BCEF1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682EEF312C6969BB00BCEF1C /* Constants.swift */; };
 		682EEF362C69760500BCEF1C /* MovieOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682EEF352C69760500BCEF1C /* MovieOverview.swift */; };
 		682EEF3A2C69780400BCEF1C /* MovieOverviewResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682EEF392C69780400BCEF1C /* MovieOverviewResult.swift */; };
+		68339A882C69A7FB0054B313 /* TrendingMoviesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68339A872C69A7FB0054B313 /* TrendingMoviesRepository.swift */; };
 		68CA27E22C66C594000E7CDA /* TmdbApi.docc in Sources */ = {isa = PBXBuildFile; fileRef = 68CA27E12C66C594000E7CDA /* TmdbApi.docc */; };
 		68CA27E82C66C594000E7CDA /* TmdbApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68CA27DD2C66C594000E7CDA /* TmdbApi.framework */; };
 		68CA27EE2C66C594000E7CDA /* TmdbApi.h in Headers */ = {isa = PBXBuildFile; fileRef = 68CA27E02C66C594000E7CDA /* TmdbApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		68CA27F82C66D240000E7CDA /* TrendingMoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA27F72C66D240000E7CDA /* TrendingMoviesTests.swift */; };
-		68CA27FA2C66E885000E7CDA /* TrendingMoviesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA27F92C66E885000E7CDA /* TrendingMoviesRepository.swift */; };
+		68CA27F82C66D240000E7CDA /* TmdbTrendingMoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA27F72C66D240000E7CDA /* TmdbTrendingMoviesTests.swift */; };
+		68CA27FA2C66E885000E7CDA /* TmdbTrendingMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA27F92C66E885000E7CDA /* TmdbTrendingMovies.swift */; };
 		68CA27FC2C66EB6E000E7CDA /* TmdbError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA27FB2C66EB6E000E7CDA /* TmdbError.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,12 +33,13 @@
 		682EEF312C6969BB00BCEF1C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		682EEF352C69760500BCEF1C /* MovieOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieOverview.swift; sourceTree = "<group>"; };
 		682EEF392C69780400BCEF1C /* MovieOverviewResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieOverviewResult.swift; sourceTree = "<group>"; };
+		68339A872C69A7FB0054B313 /* TrendingMoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMoviesRepository.swift; sourceTree = "<group>"; };
 		68CA27DD2C66C594000E7CDA /* TmdbApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TmdbApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68CA27E02C66C594000E7CDA /* TmdbApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TmdbApi.h; sourceTree = "<group>"; };
 		68CA27E12C66C594000E7CDA /* TmdbApi.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = TmdbApi.docc; sourceTree = "<group>"; };
 		68CA27E72C66C594000E7CDA /* TmdbApiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TmdbApiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		68CA27F72C66D240000E7CDA /* TrendingMoviesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMoviesTests.swift; sourceTree = "<group>"; };
-		68CA27F92C66E885000E7CDA /* TrendingMoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMoviesRepository.swift; sourceTree = "<group>"; };
+		68CA27F72C66D240000E7CDA /* TmdbTrendingMoviesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbTrendingMoviesTests.swift; sourceTree = "<group>"; };
+		68CA27F92C66E885000E7CDA /* TmdbTrendingMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbTrendingMovies.swift; sourceTree = "<group>"; };
 		68CA27FB2C66EB6E000E7CDA /* TmdbError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,9 +99,18 @@
 		68339A852C69919E0054B313 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				68CA27F92C66E885000E7CDA /* TrendingMoviesRepository.swift */,
+				68339A862C69A6EC0054B313 /* Trending */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		68339A862C69A6EC0054B313 /* Trending */ = {
+			isa = PBXGroup;
+			children = (
+				68CA27F92C66E885000E7CDA /* TmdbTrendingMovies.swift */,
+				68339A872C69A7FB0054B313 /* TrendingMoviesRepository.swift */,
+			);
+			path = Trending;
 			sourceTree = "<group>";
 		};
 		68CA27D32C66C593000E7CDA = {
@@ -135,7 +146,7 @@
 		68CA27EB2C66C594000E7CDA /* TmdbApiTests */ = {
 			isa = PBXGroup;
 			children = (
-				68CA27F72C66D240000E7CDA /* TrendingMoviesTests.swift */,
+				68CA27F72C66D240000E7CDA /* TmdbTrendingMoviesTests.swift */,
 			);
 			path = TmdbApiTests;
 			sourceTree = "<group>";
@@ -250,8 +261,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				682EEF322C6969BB00BCEF1C /* Constants.swift in Sources */,
+				68339A882C69A7FB0054B313 /* TrendingMoviesRepository.swift in Sources */,
 				68CA27E22C66C594000E7CDA /* TmdbApi.docc in Sources */,
-				68CA27FA2C66E885000E7CDA /* TrendingMoviesRepository.swift in Sources */,
+				68CA27FA2C66E885000E7CDA /* TmdbTrendingMovies.swift in Sources */,
 				68CA27FC2C66EB6E000E7CDA /* TmdbError.swift in Sources */,
 				682EEF3A2C69780400BCEF1C /* MovieOverviewResult.swift in Sources */,
 				682EEF362C69760500BCEF1C /* MovieOverview.swift in Sources */,
@@ -262,7 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68CA27F82C66D240000E7CDA /* TrendingMoviesTests.swift in Sources */,
+				68CA27F82C66D240000E7CDA /* TmdbTrendingMoviesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
