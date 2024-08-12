@@ -22,19 +22,20 @@ final class TmdbTrendingMoviesTests: XCTestCase {
     }
     
     func test_fetchTrending_withNilUrl_throwsInvalidUrlError() async {
-        let url: URL? = nil
+        sut.url = nil
+        
         do {
-            _ = try await sut.fetchMovies(from: url)
+            _ = try await sut.fetchTrending()
         } catch {
             XCTAssertEqual(error as! TmdbError, TmdbError.invalidURL)
         }
     }
     
     func test_fetchTrending_providedApiKey_withMalformedUrl_throwsBadUrlError() async {
-        let url = URL(string: "https://api.themoviedb.org/3/trending/ovie/week?api_key=\(Constants.ApiConstants.apiKey)")
+        sut.url = URL(string: "https://api.themoviedb.org/3/trending/ovie/week?api_key=\(Constants.ApiConstants.apiKey)")
         
         do {
-            _ = try await sut.fetchMovies(from: url)
+            _ = try await sut.fetchTrending()
             XCTFail("Malformed URL does not throw Bad URL error")
         } catch {
             XCTAssertEqual(error as! TmdbError, .badURL)
@@ -42,10 +43,10 @@ final class TmdbTrendingMoviesTests: XCTestCase {
     }
     
     func test_fetchTrending_providedApiKey_withNonExistentUrl_throwsNotFoundError() async {
-        let url = URL(string: "https://api.themoviedb.org/3/trendings/movie/week?api_key=\(Constants.ApiConstants.apiKey)")
+        sut.url = URL(string: "https://api.themoviedb.org/3/trendings/movie/week?api_key=\(Constants.ApiConstants.apiKey)")
         
         do {
-            _ = try await sut.fetchMovies(from: url)
+            _ = try await sut.fetchTrending()
             XCTFail("Non-existent URL does not throw Bad URL error")
         } catch {
             XCTAssertEqual(error as! TmdbError, .notFound)
@@ -53,10 +54,10 @@ final class TmdbTrendingMoviesTests: XCTestCase {
     }
     
     func test_fetchTrending_withoutApiKey_throwsUnauthorizedError() async {
-        let url = URL(string: "https://api.themoviedb.org/3/trendings/movie/week")
+        sut.url = URL(string: "https://api.themoviedb.org/3/trendings/movie/week")
         
         do {
-            _ = try await sut.fetchMovies(from: url)
+            _ = try await sut.fetchTrending()
             XCTFail("Unauthorized request did not fail")
         } catch {
             XCTAssertEqual(error as! TmdbError, .unauthorized)
@@ -65,10 +66,10 @@ final class TmdbTrendingMoviesTests: XCTestCase {
     
     func test_fetchTrending_withInvalidApiKey_throwsUnauthorizedError() async {
         let invalidApiKey = "4934209803428304823"
-        let url = URL(string: "https://api.themoviedb.org/3/trendings/movie/week?api_key=\(invalidApiKey)")
+        sut.url = URL(string: "https://api.themoviedb.org/3/trendings/movie/week?api_key=\(invalidApiKey)")
         
         do {
-            _ = try await sut.fetchMovies(from: url)
+            _ = try await sut.fetchTrending()
             XCTFail("Unauthorized request did not fail")
         } catch {
             XCTAssertEqual(error as! TmdbError, .unauthorized)
@@ -77,10 +78,10 @@ final class TmdbTrendingMoviesTests: XCTestCase {
     
     // FIXME: Internet access not taken into account - Use mocks
     func test_fetchTrending_withSuccessfulRequest_returnsMovieOverviews() async {
-        let url = trendingMoviesURL()
+        sut.url = trendingMoviesURL()
         
         do {
-            let movies = try await sut.fetchMovies(from: url)
+            let movies = try await sut.fetchTrending()
             XCTAssertEqual(movies.count, 20) // a page returns 20 results
         } catch {
             XCTFail("Request (with proper URL and API Key) should have succedded")
@@ -88,10 +89,10 @@ final class TmdbTrendingMoviesTests: XCTestCase {
     }
     
     func test_fetchTrending_withSuccessfulRequest_hasAtleastOneMovieOverview() async {
-        let url = trendingMoviesURL()
+        sut.url = trendingMoviesURL()
         
         do {
-            let movies = try await sut.fetchMovies(from: url)
+            let movies = try await sut.fetchTrending()
             XCTAssertNotNil(movies.first?.id)
             XCTAssertNotNil(movies.first?.title)
         } catch {

@@ -7,9 +7,15 @@
 
 import Foundation
 
+/// Brief information for the movie.
 public struct MovieOverview {
+    /// A unique identifier for a movie.
+    ///
+    /// Use this identifier later to find the details for the movie.
     public let id: Int
+    /// The original release title for the movie.
     public let title: String
+    /// The URL for the official movie poster.
     public let posterPath: URL?
     
     enum CodingKeys: String, CodingKey {

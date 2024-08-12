@@ -82,8 +82,8 @@
 		68FC06DC2C56A2310016A27A /* MovieFinder */ = {
 			isa = PBXGroup;
 			children = (
-				68FC06DD2C56A2310016A27A /* MovieFinderApp.swift */,
 				68DA46E62C641F52004F55C7 /* Views */,
+				68FC06DD2C56A2310016A27A /* MovieFinderApp.swift */,
 				68FC06E12C56A2330016A27A /* Assets.xcassets */,
 				68FC06E32C56A2330016A27A /* Preview Content */,
 			);

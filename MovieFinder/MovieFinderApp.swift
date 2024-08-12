@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import TmdbApi
 
 @main
 struct MovieFinderApp: App {
-    private let homeViewModel = HomeViewModel()
+    private let homeViewModel = HomeViewModel(repository: TmdbTrendingMovies())
     
     var body: some Scene {
         WindowGroup {

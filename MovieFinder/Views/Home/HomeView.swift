@@ -73,7 +73,7 @@ struct MoviePosterView: View {
 }
 
 #Preview {
-    HomeView(viewModel: HomeViewModel())
+    HomeView(viewModel: HomeViewModel(repository: TmdbTrendingMovies()))
 }
 
 extension MovieOverview: Identifiable { }

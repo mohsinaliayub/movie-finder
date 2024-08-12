@@ -13,16 +13,16 @@ import TmdbApi
 class HomeViewModel {
     var trendingMovies: [MovieOverview]
     var error: String?
-    private let repository = TmdbTrendingMovies()
+    private let repository: TrendingMoviesRepository
     
-    init() {
+    init(repository: TrendingMoviesRepository) {
+        self.repository = repository
         trendingMovies = []
     }
     
     func fetchMovies() async {
         do {
             trendingMovies = try await fetchTrendingMovies()
-            print(trendingMovies.count)
         } catch {
             self.error = error.localizedDescription
             print(error.localizedDescription)
@@ -30,7 +30,6 @@ class HomeViewModel {
     }
     
     private func fetchTrendingMovies() async throws -> [MovieOverview] {
-        let url = URL(string: "https://api.themoviedb.org/3/trending/movie/week?api_key=\(Constants.ApiConstants.apiKey)")
-        return try await repository.fetchMovies(from: url)
+        return try await repository.fetchTrending()
     }
 }
