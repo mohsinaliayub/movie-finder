@@ -110,6 +110,17 @@ final class TmdbTrendingMoviesTests: XCTestCase {
         }
     }
     
+    func test_fetchNextPage_noMoreData_returnsEmptyArray() async {
+        do {
+            _ = try await sut.fetchTrending() // fetch first page of results
+            sut.totalPages = 1 // only one page of results we have already fetched
+            let movies = try await sut.fetchNextPage()
+            XCTAssertTrue(movies.isEmpty, "No more results to fetch")
+        } catch {
+            XCTFail("Request (with proper URL and API Key) should have returned an empty array of data")
+        }
+    }
+    
     // MARK: - Helper Methods
     private func trendingMoviesURL() -> URL? {
         URL(string: "https://api.themoviedb.org/3/trending/movie/week?api_key=\(Constants.ApiConstants.apiKey)")

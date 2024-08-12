@@ -8,9 +8,14 @@
 import Foundation
 
 public class TmdbTrendingMovies: TrendingMoviesRepository {
-    var url: URL?
-    private var currentPage: Int
+    internal var url: URL?
+    
+    public private(set) var currentPage: Int
+    public var hasMoreData: Bool { currentPage < totalPages }
+    
     private let session: URLSession
+    // initial value of 1, so the first data access succeeds.
+    internal var totalPages = 1
     
     /// A successful response status code for an HTTP request.
     private let requestSuccessful = 200
@@ -32,10 +37,14 @@ public class TmdbTrendingMovies: TrendingMoviesRepository {
         // request is successful, decode data
         let moviesResult = try JSONDecoder().decode(MovieOverviewResult.self, from: data)
         currentPage = moviesResult.page
+        totalPages = moviesResult.totalPages
         return moviesResult.movies
     }
     
     public func fetchNextPage() async throws -> [MovieOverview] {
+        // if there's no more data, no need to make the api call
+        guard hasMoreData else { return [] }
+        
         // to fetch the next page, we need to add "page" query item
         var components = baseURLComponents()
         components.addQueryItem(name: "page", value: "\(currentPage+1)")
