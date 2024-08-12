@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TmdbApi
 
 struct HomeView: View {
     var viewModel: HomeViewModel
@@ -51,7 +52,7 @@ struct MoviePosterView: View {
     let movie: MovieOverview
     
     var body: some View {
-        AsyncImage(url: posterURL()) { poster in
+        AsyncImage(url: movie.posterPath) { poster in
             poster
                 .resizable()
         } placeholder: {
@@ -65,13 +66,6 @@ struct MoviePosterView: View {
         self.movie = movie
     }
     
-    private func posterURL() -> URL? {
-        guard let posterPath = movie.posterPath else { return nil }
-        
-        let posterURLString = Constants.ApiConstants.baseURLForImage + posterPath
-        return URL(string: posterURLString)
-    }
-    
     private enum DrawableConstants {
         static let aspectRatio: CGFloat = 2/3
         static let cornerRadius: CGFloat = 8
@@ -81,3 +75,5 @@ struct MoviePosterView: View {
 #Preview {
     HomeView(viewModel: HomeViewModel())
 }
+
+extension MovieOverview: Identifiable { }

@@ -94,6 +94,14 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
+		68339A852C69919E0054B313 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				68CA27F92C66E885000E7CDA /* TrendingMoviesRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		68CA27D32C66C593000E7CDA = {
 			isa = PBXGroup;
 			children = (
@@ -117,9 +125,9 @@
 			children = (
 				682EEF372C69761800BCEF1C /* Common */,
 				682EEF332C6975EB00BCEF1C /* Models */,
+				68339A852C69919E0054B313 /* Repositories */,
 				68CA27E02C66C594000E7CDA /* TmdbApi.h */,
 				68CA27E12C66C594000E7CDA /* TmdbApi.docc */,
-				68CA27F92C66E885000E7CDA /* TrendingMoviesRepository.swift */,
 			);
 			path = TmdbApi;
 			sourceTree = "<group>";
@@ -420,9 +428,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mohsinaliayub.TmdbApi;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -453,9 +464,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mohsinaliayub.TmdbApi;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

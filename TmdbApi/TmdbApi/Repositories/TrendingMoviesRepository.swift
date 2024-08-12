@@ -7,10 +7,14 @@
 
 import Foundation
 
-class TrendingMoviesRepository {
-    private let session = URLSession.shared
+public class TrendingMoviesRepository {
+    private let session: URLSession
     
-    func fetchMovies(from url: URL?) async throws -> [MovieOverview] {
+    public init(session: URLSession = .shared) {
+        self.session = session
+    }
+    
+    public func fetchMovies(from url: URL?) async throws -> [MovieOverview] {
         guard let url else { throw TmdbError.invalidURL }
         
         let (data, response) = try await session.data(from: url)

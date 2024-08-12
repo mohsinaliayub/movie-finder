@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TmdbError: Error {
+public enum TmdbError: Error {
     case invalidURL
     case badURL
     case notFound

@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct MovieOverview {
-    let id: Int
-    let title: String
-    let posterPath: URL?
+public struct MovieOverview {
+    public let id: Int
+    public let title: String
+    public let posterPath: URL?
     
     enum CodingKeys: String, CodingKey {
         case id, title
@@ -19,7 +19,7 @@ struct MovieOverview {
 }
 
 extension MovieOverview: Decodable {
-    init(from decoder: any Decoder) throws {
+    public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(Int.self, forKey: .id)
         title = try container.decode(String.self, forKey: .title)

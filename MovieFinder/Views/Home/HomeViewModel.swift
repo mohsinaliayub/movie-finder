@@ -7,11 +7,13 @@
 
 import SwiftUI
 import Observation
+import TmdbApi
 
 @Observable
 class HomeViewModel {
     var trendingMovies: [MovieOverview]
     var error: String?
+    private let repository = TrendingMoviesRepository()
     
     init() {
         trendingMovies = []
@@ -28,13 +30,7 @@ class HomeViewModel {
     }
     
     private func fetchTrendingMovies() async throws -> [MovieOverview] {
-        let urlString = "https://api.themoviedb.org/3/trending/movie/week?api_key=\(Constants.ApiConstants.apiKey)"
-        guard let url = URL(string: urlString) else { throw TMDBError.url }
-        
-        let (data, response) = try await URLSession.shared.data(from: url)
-        guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw TMDBError.notFound }
-        
-        let result = try JSONDecoder().decode(MovieOverviewResult.self, from: data)
-        return result.movies
+        let url = URL(string: "https://api.themoviedb.org/3/trending/movie/week?api_key=\(Constants.ApiConstants.apiKey)")
+        return try await repository.fetchMovies(from: url)
     }
 }
