@@ -21,6 +21,8 @@ class InMemoryTrendingMoviesRepository: TrendingMoviesRepository {
     }
     
     func fetchNextPage() async throws -> [MovieOverview] {
+        guard hasMoreData else { return [] }
+        
         let url = Bundle.main.url(forResource: "trending-movies-page-2", withExtension: "json")
         guard let url else { return [] }
         
