@@ -29,11 +29,14 @@ struct Movie {
     public let posterURL: URL?
     /// The URL for the official movie back drop.
     public let backdropURL: URL?
+    /// Official list of genres related to the movie.
+    public let genres: [Genre]
     
     enum CodingKeys: String, CodingKey {
         case id, title, synopsis = "overview"
-        case posterURL = "poster_path", backdropURL = "backdrop_path"
         case rating = "vote_average", releaseDate = "release_date"
+        case posterURL = "poster_path", backdropURL = "backdrop_path"
+        case genres
     }
 }
 
@@ -61,6 +64,8 @@ extension Movie: Decodable {
         } else {
             backdropURL = nil
         }
+        
+        genres = try container.decode([Genre].self, forKey: .genres)
     }
 }
 

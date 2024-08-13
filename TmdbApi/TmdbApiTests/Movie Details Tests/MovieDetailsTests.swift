@@ -45,6 +45,7 @@ final class MovieDetailsTests: XCTestCase {
             let movie = try await sut.fetchMovie(by: movieId)
             XCTAssertFalse(movie.title.isEmpty)
             XCTAssertFalse(movie.synopsis.isEmpty)
+            XCTAssertFalse(movie.genres.isEmpty)
         } catch {
             XCTFail("The request should not fail for proper movie id.")
         }

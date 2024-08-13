@@ -22,6 +22,7 @@
 		68D9DCF22C6BFA0400893A4A /* TmdbApi.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 68D9DCF12C6BFA0400893A4A /* TmdbApi.xctestplan */; };
 		68D9DCF42C6C020E00893A4A /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D9DCF32C6C020E00893A4A /* Movie.swift */; };
 		68D9DCF72C6C048700893A4A /* Tmdb+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D9DCF62C6C048700893A4A /* Tmdb+DateFormatter.swift */; };
+		68D9DCFA2C6C09EB00893A4A /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D9DCF92C6C09EB00893A4A /* Genre.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		68D9DCF12C6BFA0400893A4A /* TmdbApi.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TmdbApi.xctestplan; sourceTree = "<group>"; };
 		68D9DCF32C6C020E00893A4A /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		68D9DCF62C6C048700893A4A /* Tmdb+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tmdb+DateFormatter.swift"; sourceTree = "<group>"; };
+		68D9DCF92C6C09EB00893A4A /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 		682EEF332C6975EB00BCEF1C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				68D9DCF82C6C09E400893A4A /* Genre */,
 				682EEF382C69768B00BCEF1C /* Error */,
 				682EEF342C6975F400BCEF1C /* Movie */,
 			);
@@ -198,6 +201,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		68D9DCF82C6C09E400893A4A /* Genre */ = {
+			isa = PBXGroup;
+			children = (
+				68D9DCF92C6C09EB00893A4A /* Genre.swift */,
+			);
+			path = Genre;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -311,6 +322,7 @@
 				68D9DCF02C6BF95E00893A4A /* TmdbMovieDetailsRepository.swift in Sources */,
 				68D9DCF72C6C048700893A4A /* Tmdb+DateFormatter.swift in Sources */,
 				682EEF322C6969BB00BCEF1C /* Constants.swift in Sources */,
+				68D9DCFA2C6C09EB00893A4A /* Genre.swift in Sources */,
 				68D9DCF42C6C020E00893A4A /* Movie.swift in Sources */,
 				68339A882C69A7FB0054B313 /* TrendingMoviesRepository.swift in Sources */,
 				68CA27E22C66C594000E7CDA /* TmdbApi.docc in Sources */,
