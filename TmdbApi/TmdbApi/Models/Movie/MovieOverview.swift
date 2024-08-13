@@ -52,11 +52,3 @@ extension MovieOverview: Decodable {
 }
 
 extension MovieOverview: Equatable, Hashable {}
-
-extension DateFormatter {
-    static let tmdbDateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter
-    }()
-}
