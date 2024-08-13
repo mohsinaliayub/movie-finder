@@ -36,3 +36,5 @@ extension MovieOverview: Decodable {
         }
     }
 }
+
+extension MovieOverview: Equatable, Hashable {}

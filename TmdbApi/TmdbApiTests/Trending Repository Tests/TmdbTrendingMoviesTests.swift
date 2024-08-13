@@ -100,11 +100,22 @@ final class TmdbTrendingMoviesTests: XCTestCase {
         }
     }
     
-    func test_fetchNextPage_withSuccessfulRequest_returnsNewResults() async {
+    func test_fetchNextPage_withSuccessfulRequest_loadsMoreMovies() async {
         do {
             var movies = try await sut.fetchTrending() // returns first 20 results
             movies += try await sut.fetchNextPage() // returns next 20 results
             XCTAssertEqual(movies.count, 40)
+        } catch {
+            XCTFail("Request (with proper URL and API Key) should have returned the next page")
+        }
+    }
+    
+    func test_fetchNextPage_withSuccessfulRequest_loadsNewMovies() async {
+        do {
+            var movies = try await sut.fetchTrending() // returns first 20 results
+            movies += try await sut.fetchNextPage() // returns next 20 results
+            let set = Set(movies)
+            XCTAssertEqual(set.count, 40) // all elements are unique
         } catch {
             XCTFail("Request (with proper URL and API Key) should have returned the next page")
         }
