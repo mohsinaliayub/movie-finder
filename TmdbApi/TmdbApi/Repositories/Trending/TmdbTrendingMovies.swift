@@ -47,9 +47,7 @@ public class TmdbTrendingMovies: TrendingMoviesRepository {
         
         // to fetch the next page, we need to add "page" query item
         var components = baseURLComponents()
-        print(components.queryItems?.count ?? "EMPTY ARRAY")
         components.addQueryItem(name: "page", value: "\(currentPage+1)")
-        print(components.queryItems?.count ?? "EMPTY ARRAY")
         
         self.url = components.url
         

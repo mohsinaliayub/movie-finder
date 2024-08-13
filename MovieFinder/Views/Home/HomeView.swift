@@ -31,8 +31,8 @@ struct HomeView: View {
             }
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: DrawableConstants.posterSpacing) {
-                    ForEach(viewModel.indices, id: \.self) { index in
-                        MoviePosterView(for: viewModel.getMovie(at: index))
+                    ForEach(viewModel.trendingMovies) { movie in
+                        MoviePosterView(for: movie)
                             .frame(width: DrawableConstants.posterViewWidth)
                     }
                 }

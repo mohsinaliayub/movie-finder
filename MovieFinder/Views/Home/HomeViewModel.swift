@@ -11,12 +11,12 @@ import TmdbApi
 
 @Observable
 class HomeViewModel {
-    private var trendingMovies: [MovieOverview]
+    private(set) var trendingMovies: [MovieOverview]
     var indices: [Int] { Array(trendingMovies.indices) }
     var error: String?
     private let repository: TrendingMoviesRepository
     // Use this property as a threshold to load more data...
-    private let thresholdForNextPage = 2
+    private let thresholdForNextPage = 3
     private var loadingNextPage = false
     
     init(repository: TrendingMoviesRepository) {
@@ -36,13 +36,7 @@ class HomeViewModel {
     func getMovie(at index: Int) -> MovieOverview {
         // When we have reached the threshold, load more data (i.e. next page of results)
         if (index + thresholdForNextPage) >= trendingMovies.count && !loadingNextPage {
-            print("Reached the threshold: loading more data...")
-            loadingNextPage = true
-            Task {
-                await fetchNextPage()
-                print("Data loaded...")
-                loadingNextPage = false
-            }
+            Task { await fetchNextPage() }
         }
         
         return trendingMovies[index]
@@ -51,8 +45,13 @@ class HomeViewModel {
     func fetchNextPage() async {
         guard repository.hasMoreData else { return }
         
+        loadingNextPage = true
+        
         do {
-            trendingMovies += try await repository.fetchNextPage()
+            let movies = try await repository.fetchNextPage()
+            movies.forEach { trendingMovies.append($0) }
+            print(trendingMovies.count)
+            loadingNextPage = false
         } catch {
             self.error = error.localizedDescription
             print(error.localizedDescription)
