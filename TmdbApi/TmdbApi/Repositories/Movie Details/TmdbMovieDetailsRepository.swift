@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TmdbMovieDetailsRepository {
+public class TmdbMovieDetailsRepository: MovieDetailsRepository {
     
     private let session: URLSession
     
@@ -15,7 +15,7 @@ class TmdbMovieDetailsRepository {
         self.session = session
     }
     
-    func fetchMovie(by movieId: Int) async throws -> Movie {
+    public func fetchMovie(by movieId: Int) async throws -> Movie {
         guard let url = url(for: movieId) else { throw TmdbError.invalidURL }
         
         let (data, response) = try await URLSession.shared.data(from: url)
@@ -26,7 +26,6 @@ class TmdbMovieDetailsRepository {
         let movie = try JSONDecoder().decode(Movie.self, from: data)
         return movie
     }
-    
     
     private func url(for movieId: Int) -> URL? {
         var components = URLComponents(string: "https://api.themoviedb.org/3/movie/\(movieId)")
