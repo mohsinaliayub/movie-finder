@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// A type representing errors thrown by HTTP requests.
 public enum TmdbError: Error {
     case invalidURL
     case badURL

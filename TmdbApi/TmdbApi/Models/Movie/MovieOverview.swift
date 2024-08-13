@@ -7,13 +7,23 @@
 
 import Foundation
 
+/// Brief information for the movie.
 public struct MovieOverview {
+    /// A unique identifier for a movie.
+    ///
+    /// Use this identifier later to find the details for the movie.
     public let id: Int
+    /// The original release title for the movie.
     public let title: String
+    /// The URL for the official movie poster.
     public let posterPath: URL?
+    /// Short plot of movie.
+    public let synopsis: String
+    /// IMDB rating for the movie.
+    public let rating: Double
     
     enum CodingKeys: String, CodingKey {
-        case id, title
+        case id, title, synopsis = "overview", rating = "vote_average"
         case posterPath = "poster_path"
     }
 }
@@ -23,6 +33,8 @@ extension MovieOverview: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(Int.self, forKey: .id)
         title = try container.decode(String.self, forKey: .title)
+        synopsis = try container.decode(String.self, forKey: .synopsis)
+        rating = try container.decode(Double.self, forKey: .rating)
         if let posterPathString = try? container.decode(String.self, forKey: .posterPath) {
             posterPath = URL(string: Constants.ApiConstants.baseURLForPoster + posterPathString)
         } else {
@@ -30,3 +42,5 @@ extension MovieOverview: Decodable {
         }
     }
 }
+
+extension MovieOverview: Equatable, Hashable {}
