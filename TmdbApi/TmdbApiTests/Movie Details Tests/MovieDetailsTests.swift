@@ -46,6 +46,7 @@ final class MovieDetailsTests: XCTestCase {
             XCTAssertFalse(movie.title.isEmpty)
             XCTAssertFalse(movie.synopsis.isEmpty)
             XCTAssertFalse(movie.genres.isEmpty)
+            XCTAssertFalse(movie.cast.isEmpty)
         } catch {
             XCTFail("The request should not fail for proper movie id.")
         }

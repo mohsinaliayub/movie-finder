@@ -31,12 +31,16 @@ struct Movie {
     public let backdropURL: URL?
     /// Official list of genres related to the movie.
     public let genres: [Genre]
+    /// Cast members who performed acting in the movie.
+    ///
+    /// It only contains the top 20 people who performed some kind of acting in the movie.
+    public let cast: [Cast]
     
     enum CodingKeys: String, CodingKey {
         case id, title, synopsis = "overview"
         case rating = "vote_average", releaseDate = "release_date"
         case posterURL = "poster_path", backdropURL = "backdrop_path"
-        case genres
+        case genres, credits
     }
 }
 
@@ -66,6 +70,8 @@ extension Movie: Decodable {
         }
         
         genres = try container.decode([Genre].self, forKey: .genres)
+        let credits = try container.decode(Credits.self, forKey: .credits)
+        cast = Array(credits.cast.prefix(20))
     }
 }
 
