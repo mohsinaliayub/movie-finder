@@ -11,23 +11,23 @@ import Foundation
 ///
 /// A cast member is a person who did some sort of work on the movie.
 /// The work can be acting, voice or even a behind the scenes work.
-struct Cast {
+public struct Cast {
     /// Unique id of the cast member.
-    let id: Int
+    public let id: Int
     /// Original name of the cast member.
-    let name: String
+    public let name: String
     /// Character portrayed by the cast member.
     ///
     /// If multiple characters are portrayed by the person, they will be separated by '/'.
-    let character: String
+    public let character: String
     /// The order of appearance in the movie.
-    let order: Int
+    public let order: Int
     /// The credit identifier of the cast member.
     ///
     /// You can use this to get more details about the credit work.
-    let creditId: String
+    public let creditId: String
     /// The photo URL of the cast member.
-    let profilePhotoURL: URL?
+    public let profilePhotoURL: URL?
     
     enum CodingKeys: String, CodingKey {
         case id, name, character, order
@@ -37,7 +37,7 @@ struct Cast {
 }
 
 extension Cast: Decodable {
-    init(from decoder: any Decoder) throws {
+    public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(Int.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)

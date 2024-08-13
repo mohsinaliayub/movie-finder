@@ -10,7 +10,7 @@ import Foundation
 /// Detailed information for the movie.
 ///
 ///
-struct Movie {
+public struct Movie {
     /// A unique identifier for a movie.
     ///
     /// Use this identifier later to find the details for the movie.
@@ -76,7 +76,7 @@ extension Movie: Decodable {
 }
 
 extension Movie: CustomDebugStringConvertible {
-    var debugDescription: String {
+    public var debugDescription: String {
         "\(id): \(title) - \(releaseDate != nil ? "released" : "upcoming")"
     }
 }
