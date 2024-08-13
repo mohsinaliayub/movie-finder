@@ -24,7 +24,6 @@ class TmdbMovieDetailsRepository {
         }
         
         let movie = try JSONDecoder().decode(Movie.self, from: data)
-        print(movie)
         return movie
     }
     

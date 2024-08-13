@@ -14,9 +14,6 @@
   "testTargets" : [
     {
       "parallelizable" : true,
-      "skippedTests" : [
-        "TmdbTrendingMoviesTests"
-      ],
       "target" : {
         "containerPath" : "container:TmdbApi.xcodeproj",
         "identifier" : "68CA27E62C66C594000E7CDA",
