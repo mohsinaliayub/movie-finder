@@ -10,11 +10,12 @@ import TmdbApi
 
 @main
 struct MovieFinderApp: App {
-    private let homeViewModel = HomeViewModel(repository: TmdbTrendingMovies())
+    private let moviesViewModel = MoviesListViewModel(repository: TmdbTrendingMovies())
     
     var body: some Scene {
         WindowGroup {
-            HomeView(viewModel: homeViewModel)
+//            HomeView(viewModel: homeViewModel)
+            MoviesListView(dataSource: moviesViewModel)
         }
     }
 }

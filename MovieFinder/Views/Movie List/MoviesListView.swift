@@ -12,20 +12,28 @@ struct MoviesListView: View {
     var dataSource: MoviesListViewModel
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns) {
-                ForEach(dataSource.indices, id: \.self) { index in
-                    MoviePreview(movie: dataSource.fetchMovie(at: index))
+        NavigationStack {
+            ScrollView {
+                LazyVGrid(columns: columns) {
+                    ForEach(dataSource.indices, id: \.self) { index in
+                        NavigationLink {
+                            MovieDetailsView(dataSource: MovieDetailsViewModel(movieId: dataSource.fetchMovie(at: index).id, repository: TmdbMovieDetailsRepository()))
+                        } label: {
+                            MoviePreview(movie: dataSource.fetchMovie(at: index))
+                        }
+
+                    }
                 }
+                .padding()
             }
-            .padding()
-        }
-        .scrollIndicators(.hidden)
-        .task {
-            do {
-                try await dataSource.fetchMovies()
-            } catch {
-                
+            .navigationTitle("Moovies")
+            .scrollIndicators(.hidden)
+            .task {
+                do {
+                    try await dataSource.fetchMovies()
+                } catch {
+                    
+                }
             }
         }
     }
@@ -43,13 +51,6 @@ struct MoviePreview: View {
             poster
         }
     }
-    
-    var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.locale = Locale.current
-        return formatter
-    }()
     
     var poster: some View {
         AsyncImage(url: movie.posterPath) { poster in

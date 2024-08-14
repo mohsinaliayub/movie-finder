@@ -10,6 +10,7 @@ import TmdbApi
 
 struct MovieDetailsView: View {
     var dataSource: MovieDetailsViewModel
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -28,6 +29,7 @@ struct MovieDetailsView: View {
         .overlay(alignment: .topLeading) {
             backButton
                 .padding(.horizontal)
+                .hidden()
         }
     }
     
@@ -45,6 +47,34 @@ struct MovieDetailsPreview: View {
     let movie: Movie
     
     var body: some View {
+        ZStack(alignment: .top) {
+            Color.clear
+            poster
+            VStack(alignment: .leading) {
+                Spacer()
+                VStack(alignment: .leading) {
+                    Text(movie.title)
+                        .font(.title)
+                        .fontWeight(.semibold)
+//                    imdbRating
+                    genres.padding(.top, 8)
+                    synopsis.padding(.top)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Top Cast").font(.title.bold())
+                        cast
+                    }
+                    .padding(.vertical, 4)
+                }
+                .padding()
+                .background {
+                    LinearGradient(colors: [.white.opacity(0.95), .white], startPoint: .top, endPoint: .bottom)
+                }
+                .clipShape(.rect(cornerRadii: RectangleCornerRadii(topLeading: 25, topTrailing: 25)))
+            }
+        }
+    }
+    
+    var details: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 poster
@@ -124,6 +154,7 @@ struct MovieDetailsPreview: View {
                     .padding(.trailing, 8)
                 }
             }
+            .fixedSize()
         }
         .scrollIndicators(.hidden)
     }

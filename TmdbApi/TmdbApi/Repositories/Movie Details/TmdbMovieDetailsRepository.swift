@@ -11,7 +11,7 @@ public class TmdbMovieDetailsRepository: MovieDetailsRepository {
     
     private let session: URLSession
     
-    init(session: URLSession = URLSession.shared) {
+    public init(session: URLSession = URLSession.shared) {
         self.session = session
     }
     
