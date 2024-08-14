@@ -13,16 +13,31 @@ struct MovieDetailsView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            if let movie = dataSource.movie {
-                MovieDetailsPreview(movie: movie)
-            } else {
-                Text("Fetching movie...")
+            Group {
+                if let movie = dataSource.movie {
+                    MovieDetailsPreview(movie: movie)
+                } else {
+                    Text("Fetching movie...")
+                }
             }
         }
         .ignoresSafeArea(edges: .top)
         .task {
             await dataSource.fetchMovieDetails()
         }
+        .overlay(alignment: .topLeading) {
+            backButton
+                .padding(.horizontal)
+        }
+    }
+    
+    var backButton: some View {
+        Button(action: { }) {
+            Image(systemName: "arrow.backward.circle.fill")
+                .resizable()
+        }
+        .frame(width: 48, height: 48, alignment: .topLeading)
+        .foregroundStyle(.separator)
     }
 }
 
@@ -32,7 +47,7 @@ struct MovieDetailsPreview: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                poster.layoutPriority(2)
+                poster
                 Group {
                     Text(movie.title)
                         .font(.title)
@@ -47,7 +62,6 @@ struct MovieDetailsPreview: View {
                     .padding(.vertical, 4)
                 }
                 .padding(.horizontal)
-                .layoutPriority(1)
             }
         }
         .frame(maxWidth: .infinity)
