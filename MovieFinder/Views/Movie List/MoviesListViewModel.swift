@@ -37,15 +37,16 @@ class MoviesListViewModel {
         guard !loadingData else { return }
         
         loadingData = true
-        movies += try await repository.fetchTrending()
+        movies = try await repository.fetchTrending()
         loadingData = false
     }
     
     func fetchNextPage() async throws {
         guard !loadingData else { return }
         loadingData = true
-        movies += try await repository.fetchNextPage()
-        print(movies.count)
+        let newMovies = try await repository.fetchNextPage()
+        newMovies.forEach { movies.append($0) }
+        
         loadingData = false
     }
 }

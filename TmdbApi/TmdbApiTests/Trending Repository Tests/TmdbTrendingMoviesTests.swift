@@ -114,8 +114,9 @@ final class TmdbTrendingMoviesTests: XCTestCase {
         do {
             var movies = try await sut.fetchTrending() // returns first 20 results
             movies += try await sut.fetchNextPage() // returns next 20 results
+            movies += try await sut.fetchNextPage() // returns next 20 results
             let set = Set(movies)
-            XCTAssertEqual(set.count, 40) // all elements are unique
+            XCTAssertEqual(set.count, 60) // all elements are unique
         } catch {
             XCTFail("Request (with proper URL and API Key) should have returned the next page")
         }
