@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "1F1D1C8F-8616-4632-B521-18ED4E99C05F",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:TmdbApi.xcodeproj",
+        "identifier" : "68CA27E62C66C594000E7CDA",
+        "name" : "TmdbApiTests"
+      }
+    }
+  ],
+  "version" : 1
+}

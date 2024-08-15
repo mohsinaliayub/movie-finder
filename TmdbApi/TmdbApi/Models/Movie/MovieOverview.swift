@@ -21,9 +21,12 @@ public struct MovieOverview {
     public let synopsis: String
     /// IMDB rating for the movie.
     public let rating: Double
+    /// Official release date of the movie.
+    public let releaseDate: Date?
     
     enum CodingKeys: String, CodingKey {
         case id, title, synopsis = "overview", rating = "vote_average"
+        case releaseDate = "release_date"
         case posterPath = "poster_path"
     }
 }
@@ -35,6 +38,11 @@ extension MovieOverview: Decodable {
         title = try container.decode(String.self, forKey: .title)
         synopsis = try container.decode(String.self, forKey: .synopsis)
         rating = try container.decode(Double.self, forKey: .rating)
+        if let stringDate = try? container.decode(String.self, forKey: .releaseDate) {
+            releaseDate = DateFormatter.tmdbDateFormatter.date(from: stringDate)
+        } else {
+            releaseDate = nil
+        }
         if let posterPathString = try? container.decode(String.self, forKey: .posterPath) {
             posterPath = URL(string: Constants.ApiConstants.baseURLForPoster + posterPathString)
         } else {

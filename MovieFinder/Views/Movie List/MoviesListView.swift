@@ -12,24 +12,55 @@ struct MoviesListView: View {
     var dataSource: MoviesListViewModel
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns) {
-                ForEach(dataSource.movies) { movie in
-                    Text(movie.title)
+        NavigationStack {
+            ScrollView {
+                LazyVGrid(columns: columns) {
+                    ForEach(dataSource.indices, id: \.self) { index in
+                        NavigationLink {
+                            MovieDetailsView(dataSource: MovieDetailsViewModel(movieId: dataSource.fetchMovie(at: index).id, repository: TmdbMovieDetailsRepository()))
+                        } label: {
+                            MoviePreview(movie: dataSource.fetchMovie(at: index))
+                        }
+
+                    }
                 }
+                .padding()
             }
-        }
-        .task {
-            do {
-                try await dataSource.fetchMovies()
-            } catch {
-                
+            .navigationTitle("Moovies")
+            .scrollIndicators(.hidden)
+            .task {
+                do {
+                    try await dataSource.fetchMovies()
+                } catch {
+                    
+                }
             }
         }
     }
     
     private var columns: [GridItem] {
-        [GridItem(.adaptive(minimum: 120))]
+        [GridItem(), GridItem()]
+    }
+}
+
+struct MoviePreview: View {
+    let movie: MovieOverview
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            poster
+        }
+    }
+    
+    var poster: some View {
+        AsyncImage(url: movie.posterPath) { poster in
+            poster
+                .resizable()
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+        } placeholder: {
+            RoundedRectangle(cornerRadius: 8)
+        }
+        .aspectRatio(2/3, contentMode: .fit)
     }
 }
 
